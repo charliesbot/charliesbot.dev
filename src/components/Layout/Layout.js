@@ -67,12 +67,7 @@ const Layout = props => {
           <MDXProvider components={mdxComponents}>
             <Fragment>{children}</Fragment>
           </MDXProvider>
-          {!noFooter && (
-            <Footer
-              author={site.siteMetadata.author.name}
-              noSubscribeForm={noSubscribeForm}
-            />
-          )}
+          {!noFooter && <Footer author={site.siteMetadata.author.name} />}
         </div>
       </Fragment>
     </ThemeProvider>

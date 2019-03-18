@@ -2,50 +2,12 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import { css } from '@emotion/core'
 import styled from '@emotion/styled'
-import Layout from '../components/Layout'
-import Link from '../components/Link'
+import { Hero } from 'components/Hero/Hero'
+import Layout from 'components/Layout'
+import Link from 'components/Link'
 import Container from 'components/Container'
-import { rhythm } from '../lib/typography'
+import { rhythm } from 'lib/typography'
 import theme from '../../config/theme'
-
-const Hero = () => (
-  <section
-    css={css`
-      * {
-        color: ${theme.colors.white};
-      }
-      width: 100%;
-      background: ${theme.brand.primary};
-      padding: 20px 0 30px 0;
-      display: flex;
-    `}
-  >
-    <Container
-      css={css`
-        display: flex;
-        flex-direction: column;
-      `}
-    >
-      <h1
-        css={css`
-          position: relative;
-          z-index: 5;
-          line-height: 1.5;
-          margin: 0;
-          max-width: ${rhythm(15)};
-        `}
-      >
-        Your blog says the things you want to say.
-      </h1>
-    </Container>
-    <div
-      css={css`
-        height: 150px;
-        overflow: hidden;
-      `}
-    />
-  </section>
-)
 
 const PostTitle = styled.h2`
   margin-bottom: ${rhythm(0.3)};
@@ -93,7 +55,7 @@ export default function Index({ data: { site, allMdx } }) {
                 to={post.frontmatter.slug}
                 aria-label={`View ${post.frontmatter.title}`}
               >
-                Read Article →
+                Read →
               </Link>
             </Description>
             <span />
