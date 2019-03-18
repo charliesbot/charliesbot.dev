@@ -4,7 +4,7 @@ import Layout from '../components/Layout'
 import Container from '../components/Container'
 import Subscribe from '../components/Forms/Subscribe'
 
-export default ({ data: { site } }) => (
+const SubscribePage = ({ data: { site } }) => (
   <Layout site={site} noFooter>
     <Container>
       <Subscribe />
@@ -19,3 +19,5 @@ export const pageQuery = graphql`
     }
   }
 `
+
+export default SubscribePage

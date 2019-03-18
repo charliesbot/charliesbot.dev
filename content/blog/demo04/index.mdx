@@ -1,12 +1,92 @@
 ---
 slug: demo-04
-date: 2019-01-13
-title: 'Thought Leadering Considered Harmful'
+date: 2019-03-17
+title: 'Making libraries for React Native'
+subtitle: 'Part I: Android'
 description: 'This is dummy description. It has been placed here solely to demonstrate the look and feel of finished, typeset text.'
-published: true
-author: 'Joe Gatsby'
+published: false
+author: 'Charlie L'
 banner: './banner.png'
 ---
+
+React Native is getting stronger day by day. But this doesn’t mean that every little piece of functionality you need is already out of the box.
+
+While I was working for a project for Gbox, I ran into several situations that were faced with great libraries contributed by the community: video player, download services, even environment variables. Perhaps, there was one feature that didn’t have an easy workaround.
+
+**Chromecast.**
+
+There were two options at the moment, but those didn’t have any updates in the last months, and more important, none of them had android support. Waiting for others to fix this problem was not an option.
+
+Wrapping native code it’s pretty straightforward. React Native’s documentation is good enough to accomplish this goal, and there’s tons of articles that cover this topic in a pretty fancy way.
+Although, what if you want to share your trick with others?
+
+This series of articles covers this problem, thinking around the Chromecast issue. We will wrap native code for Android and iOS, create a common API for both platforms, and publish the solution to npm, so others developers can save some time thanks to our solution.
+
+You know, it feels **awesome** when you contribute back to the community.
+
+(Happy ending of the story, yes, [I did the library!](https://github.com/react-native-google-cast/react-native-google-cast))
+
+# Wrapping the library
+
+Let’s get the panorama. Chromecast SDK exists for both Android and iOS platforms. What we want to accomplish are the next goals
+
+1. Use the native SDKs.
+2. Choose the main tasks we want to use. Chromecast can achieve a lot of functionality, and cover each of them could be a extremely exhausted.
+3. Generate a common API to use in React Native.
+4. Publish our library in NPM.
+
+# Some shortcuts ahead
+
+You know, when I started my library, I researched like crazy other examples. Fortunately, since then, a guy already have created a generator for us.
+
+React Native generates libraries in its CLI too, but so far, it is for iOS only.
+
+Let’s install the generator.
+
+```
+npm install -g react-native-create-library
+```
+
+And now, let’s create our library!
+
+
+```
+react-native-create-library -—platforms ios,android ChromecastLibrary
+```
+
+So far, we’ve created a new library that will support iOS and Android.
+We could add Windows support too, but without any Chromecast SDK, it is pointless.
+
+Keep it in mind tho!
+
+## Adding the Android SDK
+
+Before starting coding, let’s take a look to the one file inside the android folder.
+
+There’s a difference between this build.gradle and the one you have in a common React Native project.
+
+```
+apply plugin: 'com.android.library'
+```
+As you guessed, this line help us to use this project as a library, and, when others use your project, it will compile correctly.
+
+Let’s stop for a minute. What do we need before coding our wrapper?
+
+Yup: the Chromecast SDK.
+
+For this library, we will use the Cast Companion Library. It uses the SDK and enhances it with a lot of syntax sugar. Thinking beyond this article, if we want to support more functions, or event controls, this will be extremely helpful.
+
+To add it to our library, go to the build.gradle file. Add the next changes:
+
+dependencies {
+    compile 'com.facebook.react:react-native:0.20.+'
+    compile 'com.google.android.libraries.cast.companionlibrary:ccl:2.8.4'
+}
+Now, we’re ready to code a little bit more. Let’s wrap it!
+
+
+
+
 
 This exists to populate GraphQL fields and avoid null errors. It should contain all of the available frontmatter.
 

@@ -18,7 +18,7 @@ module.exports = {
     author: {
       name: config.author,
       minibio: `
-        <strong>egghead</strong> is the premier place on the internet for 
+        <strong>egghead</strong> is the premier place on the internet for
         experienced developers to enhance their skills and stay current
         in the fast-faced field of web development.
       `,
@@ -34,6 +34,18 @@ module.exports = {
     },
   },
   plugins: [
+    {
+      resolve: 'gatsby-plugin-eslint',
+      options: {
+        test: /\.js$|\.jsx$/,
+        exclude: /(node_modules|.cache|public)/,
+        stages: ['develop'],
+        options: {
+          emitWarning: true,
+          failOnError: false,
+        },
+      },
+    },
     {
       resolve: 'gatsby-source-filesystem',
       options: {

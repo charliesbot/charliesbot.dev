@@ -11,7 +11,7 @@ module.exports = {
   organization: 'egghead.io LLC',
 
   // siteFBAppID: '123456789', // Facebook App ID - Optional
-  userTwitter: '@eggheadio', // Twitter Username
+  userTwitter: '@charliesbot', // Twitter Username
   ogSiteName: 'egghead.io Gatsby Starter Blog', // Facebook Site Name
   ogLanguage: 'en_US',
   googleAnalyticsID: '',
