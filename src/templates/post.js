@@ -76,7 +76,6 @@ export default function Post({
           <br />
           <MDXRenderer>{mdx.code.body}</MDXRenderer>
         </Container>
-        {/* <SubscribeForm /> */}
       </article>
       <Container noVerticalPadding>
         <Share
