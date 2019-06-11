@@ -6,7 +6,7 @@ module.exports = {
   siteUrl: 'https://charliesbot.dev', // Domain of your site. No trailing slash!
   siteLanguage: 'en', // Language Tag on <html> element
   siteLogo: 'images/me.jpg', // Used for SEO and manifest, path to your image you placed in the 'static' folder
-  siteDescription: 'This is where I post things!',
+  siteDescription: `Hey! I'm Charlie. I write about code, coffee and life.`,
   author: 'Charlie L', // Author for schemaORGJSONLD
   organization: 'Charlie Charlie',
 
