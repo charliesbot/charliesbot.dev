@@ -8,6 +8,14 @@ import { useTheme } from 'components/Theming'
 import Container from 'components/Container'
 import { rhythm } from '../lib/typography'
 
+const Avatar = styled.img`
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  margin: 0;
+  border-radius: 50%;
+`
+
 const Hero = () => {
   const theme = useTheme()
   return (
@@ -23,21 +31,20 @@ const Hero = () => {
       <Container
         css={css`
           display: flex;
-          flex-direction: column;
+          align-items: center;
         `}
       >
-        <h1
+        <Avatar src="images/me.jpg" />
+        <Container
           css={css`
-            color: ${theme.colors.white};
-            position: relative;
-            z-index: 5;
-            line-height: 1.5;
-            margin: 0;
-            max-width: ${rhythm(15)};
+            display: flex;
+            flex-direction: column;
+            padding-left: 30px;
           `}
         >
-          Your blog says the things you want to say.
-        </h1>
+          <span>A blog by Charlie L</span>
+          <span>I write about code, coffee and life.</span>
+        </Container>
       </Container>
       <div
         css={css`
@@ -88,7 +95,7 @@ export default function Index({ data: { site, allMdx } }) {
               </Link>
             </h2>
             <Description>
-              {post.excerpt}{' '}
+              {post.frontmatter.description} <br />
               <Link
                 to={post.frontmatter.slug}
                 aria-label={`View ${post.frontmatter.title}`}

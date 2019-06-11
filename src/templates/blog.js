@@ -92,7 +92,7 @@ const Blog = ({
                 margin-top: 10px;
               `}
             >
-              {post.excerpt}
+              {post.description}
             </p>{' '}
             <Link
               to={`/${post.fields.slug}`}

@@ -11,6 +11,7 @@ const Header = ({ siteTitle }) => {
   return (
     <header
       css={css`
+        font-weight: bolder;
         width: 100%;
         flex-shrink: 0;
         background: none;
