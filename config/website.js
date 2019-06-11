@@ -5,7 +5,7 @@ module.exports = {
   siteTitleShort: "Charlie's Blog", // short_name for manifest
   siteUrl: 'https://charliesbot.dev', // Domain of your site. No trailing slash!
   siteLanguage: 'en', // Language Tag on <html> element
-  siteLogo: 'images/logo.png', // Used for SEO and manifest, path to your image you placed in the 'static' folder
+  siteLogo: 'images/me.jpg', // Used for SEO and manifest, path to your image you placed in the 'static' folder
   siteDescription: 'This is where I post things!',
   author: 'Charlie L', // Author for schemaORGJSONLD
   organization: 'Charlie Charlie',
