@@ -148,7 +148,7 @@ export const PleaseConfirmIllustration = () => {
           />
           <text
             fill="#FFF"
-            fontFamily={fonts.bold}
+            fontFamily={fonts.base}
             fontSize="10"
             fontWeight="600"
             letterSpacing="1"
@@ -376,7 +376,7 @@ export const ThankYouIllustration = () => {
             />
             <text
               fill="#FFF"
-              fontFamily={fonts.regular}
+              fontFamily={fonts.base}
               fontSize="14.3"
               fontWeight="500"
             >

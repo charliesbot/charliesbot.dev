@@ -69,11 +69,14 @@ const getGlobalStyles = theme => {
       background: none;
     }
     em {
-      font-family: ${fonts.regularItalic};
+      font-family: ${fonts.base};
+      font-style: italic;
     }
     strong {
+      font-style: bold;
       em {
-        font-family: ${fonts.semiboldItalic};
+        font-family: ${fonts.base};
+        font-style: italic;
       }
     }
     input {
@@ -81,7 +84,7 @@ const getGlobalStyles = theme => {
       border: 1px solid ${theme.colors.gray};
       padding: 5px 10px;
       box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
-      font-family: ${fonts.regular};
+      font-family: ${fonts.base};
       margin-top: 5px;
       ::placeholder {
         opacity: 0.4;

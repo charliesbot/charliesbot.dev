@@ -1,21 +1,15 @@
 import Typography from 'typography'
-import '../fonts/fonts.css'
 
 export const fonts = {
-  regular: 'Inter UI Regular',
-  regularItalic: 'Inter UI Regular Italic',
-  semibold: 'Inter UI Semibold',
-  semiboldItalic: 'Inter UI Semibold Italic',
-  bold: 'Inter UI Bold',
-  boldItalic: 'Inter UI Bold Italic',
+  base: 'Open Sans',
 }
 
 const typography = new Typography({
   baseFontSize: '18px',
   baseLineHeight: 1.55,
   headerLineHeight: 1.4,
-  headerFontFamily: [fonts.bold, 'sans-serif'],
-  bodyFontFamily: [fonts.regular, 'sans-serif'],
+  headerFontFamily: [fonts.base, 'sans-serif'],
+  bodyFontFamily: [fonts.base, 'sans-serif'],
   headerColor: 'hsla(0,0%,0%,0.9)',
   bodyColor: 'hsla(0,0%,0%,0.8)',
 

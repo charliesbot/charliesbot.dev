@@ -48,7 +48,7 @@ export default function Post({
                 text-align: center;
                 font-size: 15px;
                 opacity: 0.6;
-                font-family: ${fonts.regular}, sans-serif;
+                font-family: ${fonts.base}, sans-serif;
                 font-weight: normal;
                 margin: 0 5px;
               }

@@ -20,7 +20,7 @@ const resetStyles = () => {
   }
   html,
   body {
-    font-family: ${fonts.regular}, sans-serif;
+    font-family: ${fonts.base}, sans-serif;
     font-style: normal;
     padding: 0;
     margin: 0;

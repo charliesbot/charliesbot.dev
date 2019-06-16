@@ -61,9 +61,9 @@ They are not looking for vanilla versions of bootstrap or material-design. They 
 
 What if we could follow real standards to build the basics, and use these smart frameworks to orchestrate the use of them?
 
-## Cause sharing components across realms is fun
+# Cause sharing components across realms is fun
 
-Web components is a *kinda* new standard of the web.
+Web components are *kinda* a new standard for the web.
 
 They let us add new HTML Elements that the browser can understand natively.
 
@@ -133,7 +133,7 @@ Let's see what is happening here!
 
 There are two core concepts regarding Web Components.
 
-## Custom Elemen by extending from HTMLElement
+## Custom Elements by extending from HTMLElement
 This let us create new elements that encapsulates our custom component.
 
 ## Shadow DOM
@@ -144,14 +144,19 @@ Luckily, we have now Shadow DOM, which let us do exactly that. It allow us to cr
 
 The big picture is: we're declaring a scope were our styles and dom is attached, and our styles, for example, won't clash
 with others outside this scope.
-This is a a big deal!
+This is a big deal!
 
 ## Lifecycle
-Web components have lifecycles! One of them is *connectedCallback*.
+![webcomponents_lifecycle](./images/lifecycle.jpeg)
 
-At the beginning, they are empty/undefined, and you may see that they flash while getting the resources and the styles.
-When the component is ready, we're gonna receive a callback to start doing our own magic,
-like reading attributes, for example.
+Web components have lifecycles!
+
+In this example, we are using *connectedCallback*.
+
+When the web component arrives to the DOM, the shadow DOM have not been attached to the tag.
+You may see that they flash while they're getting the resources and the styles.
+
+This callback is triggered when the whole component is ready, so we can start doing our own magic, like reading attributes, for example.
 
 # Tradeoffs
 
@@ -160,7 +165,7 @@ We may agree that the API is a little bit verbose. That's probably the main thro
 Fortunately, others developers are stepping up with solutions like Stencil or Svelte.
 Tools that reduce the boilerplate without adding any dependency, as they act just as compilers.
 
-# Sharing is caring
+# Last thoughts
 
 And we are ready to go!
 
@@ -174,16 +179,5 @@ But when talking about the core bones of our application, web components make to
 - If you want freedom to experiment with new technologies, and reuse the foundation.
 
 As you can see, it's all about delegating the basics to the APIs the browser already deliver, and let the frameworks do the hard things.
-
-# Last thoughts
-
-So, you caught your first wild component. You can use it right now across frameworks. Isn't that cool?
-
-Now imagine a world where we don't need to decide between react-material or vue-material, but just material-design with the same components experience.
-
-Web components allow us to think entirely on components, and that's it.
-The new discussions could be about a better technical decisions, but not about
-- *How can we introduce this awesome component library to my current framework?*
-- *Holy cow! A new framework is out! Time to rebuilt the component library from the ground up*
 
 Start playing with it, and let me know what is your experience with it!
