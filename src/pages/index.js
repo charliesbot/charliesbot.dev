@@ -9,8 +9,8 @@ import Container from 'components/Container'
 import { rhythm } from '../lib/typography'
 
 const Avatar = styled.img`
-  width: 80px;
-  height: 80px;
+  width: 70px;
+  height: 70px;
   object-fit: cover;
   margin: 0;
   border-radius: 50%;
@@ -21,14 +21,13 @@ const Hero = () => {
   return (
     <section
       css={css`
-        color: ${theme.colors.white};
+        color: ${theme.colors.text};
         width: 100%;
-        background: ${theme.colors.primary};
-        padding: 20px 0 30px 0;
         display: flex;
       `}
     >
       <Container
+        noVerticalPadding
         css={css`
           display: flex;
           align-items: center;
@@ -39,10 +38,10 @@ const Hero = () => {
           css={css`
             display: flex;
             flex-direction: column;
-            padding-left: 30px;
+            padding-left: 20px;
           `}
         >
-          <span>A blog by Charlie L</span>
+          <span>Thoughts by Charlie L</span>
           <span>I write about code, coffee and life.</span>
         </Container>
       </Container>
