@@ -1,8 +1,21 @@
-import React from 'react'
+import React from "react";
 
-export default () => (
-  <div>
-    <h1>NOT FOUND</h1>
-    <p>You just hit a route that doesn't exist... the sadness.</p>
-  </div>
-)
+import Layout from "@narative/gatsby-theme-novela/src/components/Layout";
+import Section from "@narative/gatsby-theme-novela/src/components/Section";
+import SEO from "@narative/gatsby-theme-novela/src/components/SEO";
+import Headings from "@narative/gatsby-theme-novela/src/components/Headings";
+
+function NotFoundPage() {
+  return (
+    <Layout>
+      <SEO />
+      <Section>
+        <div style={{ marginTop: "100px" }}>
+          <Headings.h1>404: Page Not Found</Headings.h1>
+        </div>
+      </Section>
+    </Layout>
+  );
+}
+
+export default NotFoundPage;

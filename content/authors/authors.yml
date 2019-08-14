@@ -1,0 +1,13 @@
+- name: Charlie L
+  bio: |
+    Front End engineer. Dev Speaker. Coffee and functional programming advocate.
+    Happily located at the intersection of technology and art.
+  avatar: ./avatars/charlie.png
+  featured: true
+  social:
+    - name: github
+      url: https://github.com/charliesbot
+    - name: twitter
+      url: https://twitter.com/charliesbot
+    - name: linkedin
+      url: https://www.linkedin.com/in/carlos-lopez-bb845337

@@ -1,167 +1,48 @@
-const config = require('./config/website')
-const pathPrefix = config.pathPrefix === '/' ? '' : config.pathPrefix
-
-require('dotenv').config({
-  path: `.env.${process.env.NODE_ENV}`,
-})
-
 module.exports = {
-  pathPrefix: config.pathPrefix,
   siteMetadata: {
-    siteUrl: config.siteUrl + pathPrefix,
-    title: config.siteTitle,
-    twitterHandle: config.twitterHandle,
-    description: config.siteDescription,
-    keywords: ['Video Blogger'],
-    canonicalUrl: config.siteUrl,
-    image: config.siteLogo,
-    author: {
-      name: config.author,
-      minibio: `
-        <strong>egghead</strong> is the premier place on the internet for 
-        experienced developers to enhance their skills and stay current
-        in the fast-faced field of web development.
-      `,
+    title: `charliesbot's blog`,
+    name: `charliesbot`,
+    siteUrl: `https://charliesbot.dev`,
+    description: `Charliesbot is a blog where I talk about front end, code, coffee and my life as a software engineer`,
+    hero: {
+      heading: `Hey! I'm Charlie. I write about Front End, coffee, books and life.`,
+      maxWidth: 652,
     },
-    organization: {
-      name: config.organization,
-      url: config.siteUrl,
-      logo: config.siteLogo,
-    },
-    social: {
-      twitter: config.twitterHandle,
-      fbAppID: '',
-    },
+    social: [
+      {
+        name: `twitter`,
+        url: `https://twitter.com/charliesbot`,
+      },
+      {
+        name: `github`,
+        url: `https://github.com/charliesbot`,
+      },
+      {
+        name: `linkedin`,
+        url: `https://www.linkedin.com/in/carlos-lopez-bb845337`,
+      }
+    ],
   },
   plugins: [
     {
-      resolve: 'gatsby-source-filesystem',
+      resolve: "@narative/gatsby-theme-novela",
       options: {
-        path: `${__dirname}/content/blog`,
-        name: 'blog',
+        contentPosts: "content/posts",
+        contentAuthors: "content/authors",
+        basePath: "/",
       },
     },
     {
-      resolve: `gatsby-mdx`,
+      resolve: `gatsby-plugin-manifest`,
       options: {
-        extensions: ['.mdx', '.md', '.markdown'],
-        gatsbyRemarkPlugins: [
-          {
-            resolve: 'gatsby-remark-images',
-            options: {
-              backgroundColor: '#fafafa',
-              maxWidth: 1035,
-            },
-          },
-        ],
+        name: `Novela by Narative`,
+        short_name: `Novela`,
+        start_url: `/`,
+        background_color: `#fff`,
+        theme_color: `#fff`,
+        display: `standalone`,
+        icon: `src/assets/favicon.png`,
       },
     },
-    'gatsby-plugin-sharp',
-    'gatsby-transformer-sharp',
-    'gatsby-plugin-emotion',
-    'gatsby-plugin-catch-links',
-    'gatsby-plugin-react-helmet',
-    'gatsby-plugin-typescript',
-    {
-      resolve: 'gatsby-plugin-manifest',
-      options: {
-        name: config.siteTitle,
-        short_name: config.siteTitleShort,
-        description: config.siteDescription,
-        start_url: config.pathPrefix,
-        background_color: config.backgroundColor,
-        theme_color: config.themeColor,
-        display: 'standalone',
-        icons: [
-          {
-            src: '/android-chrome-192x192.png',
-            sizes: '192x192',
-            type: 'image/png',
-          },
-          {
-            src: '/android-chrome-512x512.png',
-            sizes: '512x512',
-            type: 'image/png',
-          },
-        ],
-      },
-    },
-    {
-      resolve: 'gatsby-plugin-google-fonts',
-      options: {
-        fonts: [
-          'Open Sans:400,400i,600,700,800', // you can also specify font weights and styles
-        ],
-        display: 'swap',
-      },
-    },
-    {
-      resolve: `gatsby-plugin-google-analytics`,
-      options: {
-        trackingId: `UA-142215167-1`,
-      },
-    },
-    {
-      resolve: `gatsby-plugin-feed`,
-      options: {
-        query: `
-          {
-            site {
-              siteMetadata {
-                title
-                description
-                siteUrl
-                site_url: siteUrl
-              }
-            }
-          }
-        `,
-        feeds: [
-          {
-            serialize: ({ query: { site, allMdx } }) => {
-              return allMdx.edges.map(edge => {
-                return Object.assign({}, edge.node.frontmatter, {
-                  description: edge.node.excerpt,
-                  date: edge.node.fields.date,
-                  url: site.siteMetadata.siteUrl + '/' + edge.node.fields.slug,
-                  guid: site.siteMetadata.siteUrl + '/' + edge.node.fields.slug,
-                })
-              })
-            },
-            query: `
-              {
-                allMdx(
-                  limit: 1000,
-                  filter: { frontmatter: { published: { ne: false } } }
-                  sort: { order: DESC, fields: [frontmatter___date] }
-                ) {
-                  edges {
-                    node {
-                      excerpt(pruneLength: 250)
-                      fields { 
-                        slug
-                        date
-                      }
-                      frontmatter {
-                        title
-                      }
-                    }
-                  }
-                }
-              }
-            `,
-            output: '/rss.xml',
-            title: 'Blog RSS Feed',
-          },
-        ],
-      },
-    },
-    {
-      resolve: `gatsby-plugin-typography`,
-      options: {
-        pathToConfigModule: `src/lib/typography`,
-      },
-    },
-    'gatsby-plugin-offline',
   ],
-}
+};
