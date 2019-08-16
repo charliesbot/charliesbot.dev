@@ -20,16 +20,16 @@ module.exports = {
       {
         name: `linkedin`,
         url: `https://www.linkedin.com/in/carlos-lopez-bb845337`,
-      }
+      },
     ],
   },
   plugins: [
     {
-      resolve: "@narative/gatsby-theme-novela",
+      resolve: '@narative/gatsby-theme-novela',
       options: {
-        contentPosts: "content/posts",
-        contentAuthors: "content/authors",
-        basePath: "/",
+        contentPosts: 'content/posts',
+        contentAuthors: 'content/authors',
+        basePath: '/',
       },
     },
     {
@@ -44,5 +44,11 @@ module.exports = {
         icon: `src/assets/favicon.png`,
       },
     },
+    {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: `UA-142215167-1`,
+      },
+    },
   ],
-};
+}
