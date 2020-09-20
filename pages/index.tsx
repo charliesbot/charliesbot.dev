@@ -1,11 +1,14 @@
-import { Post } from "../components/Post";
+import { Box } from "@components/ds/Box";
+import { Post } from "@components/Post";
 import { posts } from "../getAllPosts";
 
 const IndexPage = () => {
   return (
     <>
       {posts.map((post) => (
-        <Post key={post.link} post={post} />
+        <Box width="70vw" margin="0 auto">
+          <Post key={post.link} post={post} />
+        </Box>
       ))}
     </>
   );
