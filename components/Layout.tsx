@@ -1,4 +1,5 @@
 import Head from "next/head";
+import { Box } from "./ds/Box";
 import { NavBar } from "./Header";
 
 type Props = {
@@ -18,7 +19,9 @@ const Layout = ({ children, pageTitle, description }: Props) => {
       </Head>
       <main>
         <NavBar />
-        <div className="content">{children}</div>
+        <Box className="content" width="50vw" margin="0 auto">
+          {children}
+        </Box>
       </main>
     </>
   );
