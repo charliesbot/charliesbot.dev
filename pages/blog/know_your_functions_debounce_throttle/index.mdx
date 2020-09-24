@@ -11,21 +11,15 @@ export default ({ children  }) => <BlogPost meta={meta}>{children}</BlogPost>;
 
 _**Know your functions** is a series of posts that help us to understand how our daily utils work under the hood_
 
-Functions are a fundamental part of most of the programming languages.
-
-When dealing with performance, functions could be part of our bottlenecks. Fortunately, there are tools like throttle and debounce.
+Functions are a fundamental part of most of the programming languages. When dealing with performance, functions could be part of our bottlenecks. Fortunately, there are tools like throttle and debounce.
 
 Both functions exist in lodash, one of the most famous libraries in the javascript ecosystem.
-
 However, before jumping into installing it, wait a little bit!
-
 Let's understand what they are, and **how do they work**.
-
-# Going back to the drawing board
 
 First of all, what the heck are those functions?
 
-## Debounce
+### Debounce
 
 Debounce is a tool that receives a function and a delay.
 It triggers the function after this delay happened.
@@ -35,7 +29,7 @@ it resets the timer and starts the waiting all over again.
 
 ![debounce](./images/debounce.jpg)
 
-## Throttle
+### Throttle
 
 Throttle is pretty similar to debounce.
 
@@ -43,9 +37,9 @@ Instead of resetting the timer, it blocks any function call that happens while t
 
 ![throttle](./images/throttle.jpg)
 
-# Building our utils
+## Building our utils
 
-## Debounce
+### Debounce
 
 The principles of a debounce function are
 
@@ -67,7 +61,7 @@ const debounce = <T extends Func>(fn: T, delay: number) => {
 }
 ```
 
-## Throttle
+### Throttle
 
 The principles of a throttle function are
 
