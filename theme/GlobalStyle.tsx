@@ -1,6 +1,7 @@
-import { createGlobalStyle } from "styled-components";
+import {createGlobalStyle} from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
+
 html,
 body {
   background: ${(props) => props.theme.background};
@@ -29,4 +30,4 @@ p {
 }
 `;
 
-export { GlobalStyle };
+export {GlobalStyle};

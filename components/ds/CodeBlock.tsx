@@ -21,6 +21,13 @@ const CodeBlock = (props: Props) => {
         fontSize: "16px",
         background: "#292c34",
       }}
+      codeTagProps={{
+        style: {
+          // @ts-ignore
+          fontDisplay: "swap",
+          fontFamily: "JetBrains Mono",
+        },
+      }}
       lineNumberStyle={{
         display: "block",
         width: 32,
