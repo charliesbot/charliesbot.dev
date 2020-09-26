@@ -1,6 +1,7 @@
 import styled, { CSSObject } from "styled-components";
 
 type CherryPick =
+  | "lineHeight"
   | "width"
   | "height"
   | "margin"
@@ -25,6 +26,7 @@ type Props = Pick<CSSObject, CherryPick> & {
 };
 
 const Box = styled.div<Props>((props) => ({
+  lineHeight: props.lineHeight,
   width: props.width,
   height: props.height,
   paddingTop: props.paddingTop,

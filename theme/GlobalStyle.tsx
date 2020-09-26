@@ -1,4 +1,4 @@
-import {createGlobalStyle} from "styled-components";
+import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
 
@@ -28,6 +28,28 @@ h1, h2, h3, h4, h5, h6 {
 p {
   margin: 0;
 }
+
+ul {
+  list-style: none;
+  padding: 15px 0px 30px 30px;
+}
+
+li {
+  position: relative;
+  padding-bottom: 15px;
+  font-size: 18px;
+}
+
+li:before {
+  content: "";
+  position: absolute;
+  left: -30px;
+  top: 8px;
+  height: 8px;
+  width: 8px;
+  background: #78b9d9;
+}
+
 `;
 
-export {GlobalStyle};
+export { GlobalStyle };

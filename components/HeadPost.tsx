@@ -1,3 +1,7 @@
+import { Box } from "./ds/Box";
+import { Headline } from "./ds/Headline";
+import { Text } from "./ds/Text";
+
 export type Meta = {
   title: string;
   description: string;
@@ -11,16 +15,15 @@ type Props = {
 };
 
 const HeadPost = ({ meta, isBlogPost }: Props) => (
-  <>
-    <h1 className={isBlogPost ? "great-title" : ""}>{meta.title}</h1>
-    <div className="details">
-      {isBlogPost ? null : <p>{meta.description}</p>}
+  <Box marginBottom="1.75rem">
+    <Headline element="h1" className={isBlogPost ? "great-title" : ""}>
+      {meta.title}
+    </Headline>
+    <Box className="details" marginTop="-1.4rem">
+      {isBlogPost ? null : <Text>{meta.description}</Text>}
       <span>{meta.date}</span>
-      <span role="img" aria-label="one coffee">
-        ☕ {meta.readTime + " min read"}
-      </span>
-    </div>
-  </>
+    </Box>
+  </Box>
 );
 
 export { HeadPost };

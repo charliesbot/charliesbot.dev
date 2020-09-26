@@ -1,19 +1,17 @@
 import { BlogPost }from '../../../components/BlogPost';
 
 export const meta = {
-  title: 'Introduction to Next.js',
-  description: 'Getting started with the Next framework',
+  title: 'Know your functions: Debounce and Throttle',
+  description: 'Sharing your custom components to the world is possible. No frameworks needed.',
   date: 'Aug 04, 2020',
-  readTime: 2
+  readTime: 5
 }
 
 export default ({ children  }) => <BlogPost meta={meta}>{children}</BlogPost>;
 
-_**Know your functions** is a series of posts that help us to understand how our daily utils work under the hood_
-
 Functions are a fundamental part of most of the programming languages. When dealing with performance, functions could be part of our bottlenecks. Fortunately, there are tools like throttle and debounce.
 
-Both functions exist in lodash, one of the most famous libraries in the javascript ecosystem.
+Both functions exist in [lodash](https://lodash.com), one of the most famous libraries in the javascript ecosystem.
 However, before jumping into installing it, wait a little bit!
 Let's understand what they are, and **how do they work**.
 
@@ -28,18 +26,6 @@ If something calls the function again before the requested time finishes,
 it resets the timer and starts the waiting all over again.
 
 ![debounce](./images/debounce.jpg)
-
-### Throttle
-
-Throttle is pretty similar to debounce.
-
-Instead of resetting the timer, it blocks any function call that happens while the delay is running.
-
-![throttle](./images/throttle.jpg)
-
-## Building our utils
-
-### Debounce
 
 The principles of a debounce function are
 
@@ -62,6 +48,12 @@ const debounce = <T extends Func>(fn: T, delay: number) => {
 ```
 
 ### Throttle
+
+Throttle is pretty similar to debounce.
+
+Instead of resetting the timer, it blocks any function call that happens while the delay is running.
+
+![throttle](./images/throttle.jpg)
 
 The principles of a throttle function are
 

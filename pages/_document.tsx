@@ -42,6 +42,10 @@ class CustomDocument extends Document {
             href="https://dev-cats.github.io/code-snippets/JetBrainsMono.css"
             rel="stylesheet"
           />
+          <link
+            href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap"
+            rel="stylesheet"
+          />
         </Head>
         <body>
           <Main />

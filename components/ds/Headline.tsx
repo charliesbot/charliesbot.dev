@@ -2,6 +2,8 @@ import styled from "styled-components";
 
 type Props = {
   element: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
+  children: React.ReactNode;
+  className?: string;
 };
 
 type FontSizeProp = {
@@ -19,6 +21,9 @@ const FontSizeConfig: FontSizeProp = {
 
 const HeadlineStyled = styled.span<Props>((props) => {
   return {
+    marginTop: "3.5rem",
+    marginBottom: "1.75rem",
+    fontFamily: "Merriweather",
     fontSize: FontSizeConfig[props.element],
   };
 });
