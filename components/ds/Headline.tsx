@@ -11,18 +11,19 @@ type FontSizeProp = {
 };
 
 const FontSizeConfig: FontSizeProp = {
-  h1: "2.625rem",
-  h2: "1.75rem",
-  h3: "1.3125rem",
-  h4: "1.125rem",
-  h5: "1rem",
-  h6: "0.875rem",
+  h1: "5rem",
+  h2: "3.6rem",
+  h3: "3rem",
+  h4: "2.5rem",
+  h5: "2rem",
+  h6: "2rem",
 };
 
 const HeadlineStyled = styled.span<Props>((props) => {
   return {
     marginTop: "3.5rem",
-    marginBottom: "1.75rem",
+    marginBottom: "0.4em",
+    lineHeight: "1.32",
     fontFamily: "Merriweather",
     fontSize: FontSizeConfig[props.element],
   };

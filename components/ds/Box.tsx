@@ -3,7 +3,9 @@ import styled, { CSSObject } from "styled-components";
 type CherryPick =
   | "lineHeight"
   | "width"
+  | "maxWidth"
   | "height"
+  | "maxHeight"
   | "margin"
   | "padding"
   | "paddingTop"
@@ -19,16 +21,21 @@ type CherryPick =
   | "marginRight"
   | "marginVertical"
   | "marginHorizontal"
-  | "fontSize";
+  | "fontSize"
+  | "fontFamily";
 
-type Props = Pick<CSSObject, CherryPick> & {
+export type BoxProps = Partial<Pick<CSSObject, CherryPick>> & {
   children?: React.ReactNode;
 };
 
-const Box = styled.div<Props>((props) => ({
+const Box = styled.div<BoxProps>((props) => ({
   lineHeight: props.lineHeight,
+  fontSize: props.fontSize,
+  fontFamily: props.fontFamily,
   width: props.width,
+  maxWidth: props.maxWidth,
   height: props.height,
+  maxHeight: props.maxHeight,
   paddingTop: props.paddingTop,
   paddingRight: props.paddingRight,
   paddingBottom: props.paddingBottom,
@@ -36,6 +43,10 @@ const Box = styled.div<Props>((props) => ({
   padding: (() => {
     let finalPadding = Array(4).fill("0");
     let hasPadding = false;
+
+    if (props.padding) {
+      return props.padding;
+    }
 
     if (props.paddingVertical) {
       hasPadding = true;
@@ -45,10 +56,6 @@ const Box = styled.div<Props>((props) => ({
     if (props.paddingHorizontal) {
       hasPadding = true;
       finalPadding[1] = finalPadding[3] = props.paddingHorizontal;
-    }
-
-    if (props.padding) {
-      return props.padding;
     }
 
     return hasPadding ? finalPadding.join(" ") : undefined;
@@ -76,7 +83,6 @@ const Box = styled.div<Props>((props) => ({
 
     return hasMargin ? finalMargin.join(" ") : undefined;
   })(),
-  fontSize: props.fontSize,
 }));
 
 export { Box };

@@ -1,13 +1,30 @@
-import { Box } from "./Box";
+import { Box, BoxProps } from "./Box";
 
-type Props = {
+type Variant = "inline" | "paragraph";
+
+type Props = Pick<BoxProps, "fontSize" | "fontFamily" | "marginBottom"> & {
   children?: React.ReactNode;
+  variant?: Variant;
 };
 
 const Text = (props: Props) => {
-  const { children } = props;
+  const {
+    children,
+    variant = "inline",
+    fontSize = "1.8rem",
+    fontFamily,
+    marginBottom,
+  } = props;
+  const htmlElement = variant === "paragraph" ? "p" : "span";
+
   return (
-    <Box as="p" fontSize="1rem" lineHeight="1.5rem">
+    <Box
+      as={htmlElement}
+      fontSize={fontSize}
+      fontFamily={fontFamily ?? "inherit"}
+      lineHeight="1.5em"
+      marginBottom={marginBottom}
+    >
       {children}
     </Box>
   );

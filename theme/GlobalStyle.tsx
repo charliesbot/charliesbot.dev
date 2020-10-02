@@ -1,9 +1,11 @@
 import { createGlobalStyle } from "styled-components";
+import { theme } from "./theme";
 
 const GlobalStyle = createGlobalStyle`
 
 html,
 body {
+  font-size: 10px;
   background: ${(props) => props.theme.background};
   color: ${(props) => props.theme.textColor};
   padding: 0;
@@ -12,9 +14,13 @@ body {
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
+body {
+  letter-spacing: .01rem;
+}
+
 a {
-  color: inherit;
-  text-decoration: none;
+
+  color:${() => theme.colors.lightBlue};
 }
 
 * {
@@ -32,19 +38,20 @@ p {
 ul {
   list-style: none;
   padding: 15px 0px 30px 30px;
+  margin: 0;
 }
 
 li {
+  font-size: 1.8rem;
   position: relative;
   padding-bottom: 15px;
-  font-size: 18px;
 }
 
 li:before {
   content: "";
   position: absolute;
   left: -30px;
-  top: 8px;
+  top: 7px;
   height: 8px;
   width: 8px;
   background: #78b9d9;
