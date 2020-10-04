@@ -1,12 +1,7 @@
-type WebpackContext = __WebpackModuleApi.RequireContext;
+import { frontMatter as mdxFtw } from "pages/blog/debounce_and_throttle/index.mdx";
 
-const importAll = (r: WebpackContext) => {
-  return r.keys().map((fileName) => ({
-    link: fileName.substr(1).replace(/\/index\.mdx$/, ""),
-    module: r(fileName),
-  }));
-};
+const posts = [mdxFtw];
 
-const posts = importAll(require.context("./content/", true, /\.mdx$/));
+const formatPath = (p: string) => p.replace(/\.mdx$/, "");
 
-export { posts };
+export { posts, formatPath };
