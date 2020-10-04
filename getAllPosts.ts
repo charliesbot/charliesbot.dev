@@ -7,6 +7,6 @@ const importAll = (r: WebpackContext) => {
   }));
 };
 
-const posts = importAll(require.context("./pages/blog/", true, /\.mdx$/));
+const posts = importAll(require.context("./content/", true, /\.mdx$/));
 
 export { posts };

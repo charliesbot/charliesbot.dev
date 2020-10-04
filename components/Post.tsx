@@ -2,34 +2,34 @@ import Link from "next/link";
 import { Headline } from "./ds/Headline";
 import { HorizontalLayout } from "./ds/HorizontalLayout";
 import { Text } from "./ds/Text";
-import { Meta } from "./HeadPost";
+import { Layout } from "./Layout";
 
 type Props = {
   post: {
+    date: string;
+    title: string;
+    excerpt: string;
     link: string;
-    module: {
-      meta: Meta;
-    };
+    content: any;
   };
 };
 
 export const Post = ({ post }: Props) => {
-  const {
-    link,
-    module: { meta },
-  } = post;
+  const { link, title, date, excerpt, content } = post;
+  console.log(post);
 
   return (
-    <article>
+    <Layout>
       <HorizontalLayout space="2rem">
         <Link href={"/blog" + link}>
           <a>
-            <Headline element="h5">{meta.title}</Headline>
+            <Headline element="h5">{title}</Headline>
           </a>
         </Link>
-        <Text>{meta.date}</Text>
+        <Text>{date}</Text>
       </HorizontalLayout>
-      <Text fontSize="1.4rem">{meta.description}</Text>
-    </article>
+      <Text fontSize="1.4rem">{excerpt}</Text>
+      <article>{content}</article>
+    </Layout>
   );
 };

@@ -1,19 +1,18 @@
 import { HeadPost, Meta } from "./HeadPost";
 import { Box } from "@components/ds/Box";
+import { Layout } from "./Layout";
 
 type Props = {
-  children: React.ReactNode;
+  content: string;
   meta: Meta;
 };
 
-const BlogPost = ({ children, meta }: Props) => {
+const BlogPost = ({ content, meta }: Props) => {
   return (
-    <>
+    <Layout>
       <HeadPost meta={meta} isBlogPost />
-      <Box as="article" marginTop="3.5rem">
-        {children}
-      </Box>
-    </>
+      <article dangerouslySetInnerHTML={{ __html: content }} />
+    </Layout>
   );
 };
 
