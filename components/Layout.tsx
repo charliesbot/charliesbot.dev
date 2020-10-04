@@ -18,8 +18,8 @@ const Layout = ({ children, pageTitle, description }: Props) => {
         <title>{pageTitle}</title>
       </Head>
       <main>
-        <NavBar />
         <Box className="content" width="80%" maxWidth="800px" margin="0 auto">
+          <NavBar />
           {children}
         </Box>
       </main>

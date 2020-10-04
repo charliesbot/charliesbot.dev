@@ -1,5 +1,8 @@
 import Link from "next/link";
-import { HeadPost, Meta } from "./HeadPost";
+import { Headline } from "./ds/Headline";
+import { HorizontalLayout } from "./ds/HorizontalLayout";
+import { Text } from "./ds/Text";
+import { Meta } from "./HeadPost";
 
 type Props = {
   post: {
@@ -18,10 +21,15 @@ export const Post = ({ post }: Props) => {
 
   return (
     <article>
-      <HeadPost meta={meta} />
-      <Link href={"/blog" + link}>
-        <a>Read more →</a>
-      </Link>
+      <HorizontalLayout space="2rem">
+        <Link href={"/blog" + link}>
+          <a>
+            <Headline element="h5">{meta.title}</Headline>
+          </a>
+        </Link>
+        <Text>{meta.date}</Text>
+      </HorizontalLayout>
+      <Text fontSize="1.4rem">{meta.description}</Text>
     </article>
   );
 };

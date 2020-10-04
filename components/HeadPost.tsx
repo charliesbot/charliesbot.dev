@@ -14,15 +14,12 @@ type Props = {
   isBlogPost?: boolean;
 };
 
-const HeadPost = ({ meta, isBlogPost }: Props) => (
-  <Box marginBottom="6.0rem">
-    <Headline element="h1" className={isBlogPost ? "great-title" : ""}>
-      {meta.title}
-    </Headline>
-    <Box className="details" marginTop="-1.0rem">
-      {isBlogPost ? null : <Text>{meta.description}</Text>}
-      <Text fontFamily="monospace">{meta.date}</Text>
-    </Box>
+const HeadPost = ({ meta }: Props) => (
+  <Box marginBottom="6rem">
+    <Headline element="h1">{meta.title}</Headline>
+    <Text fontFamily="monospace" fontSize="1.4rem">
+      {meta.date}
+    </Text>
   </Box>
 );
 
