@@ -1,4 +1,4 @@
-import { PostLayout } from "@components/PostLayout";
+import { PostEntry } from "@components/PostEntry";
 import { posts } from "../getAllPosts";
 
 const IndexPage = () => {
@@ -6,7 +6,7 @@ const IndexPage = () => {
   return (
     <>
       {posts.map((post) => (
-        <PostLayout key={post.link} post={post} />
+        <PostEntry key={post.link} frontMatter={post} />
       ))}
     </>
   );
