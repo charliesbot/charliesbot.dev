@@ -14,9 +14,8 @@ type Props = {
   };
 };
 
-export const Post = (props) => {
+export const PostLayout = (props) => {
   const { link, title, date, excerpt, content } = props;
-  console.log(props);
 
   return (
     <Layout>

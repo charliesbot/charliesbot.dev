@@ -4,6 +4,7 @@ const emoji = require("remark-emoji");
 const withMdxEnhanced = require("next-mdx-enhanced");
 
 module.exports = withMdxEnhanced({
+  layoutPath: "layouts",
   fileExtensions: ["mdx"],
   remarkPlugins: [images, emoji],
   rehypePlugins: [],

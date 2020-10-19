@@ -1,5 +1,4 @@
 import { HeadPost, Meta } from "./HeadPost";
-import { Box } from "@components/ds/Box";
 import { Layout } from "./Layout";
 
 type Props = {

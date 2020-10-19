@@ -2,23 +2,22 @@ import { Box } from "./ds/Box";
 import { Headline } from "./ds/Headline";
 import { Text } from "./ds/Text";
 
-export type Meta = {
+export type FrontMatter = {
   title: string;
-  description: string;
-  date: string;
-  readTime: string;
+  publishedAt: string;
+  summary: string;
+  __resourcePath: string;
 };
 
 type Props = {
-  meta: Meta;
-  isBlogPost?: boolean;
+  frontMatter: FrontMatter;
 };
 
-const HeadPost = ({ meta }: Props) => (
+const HeadPost = ({ frontMatter }: Props) => (
   <Box marginBottom="6rem">
-    <Headline element="h1">{meta.title}</Headline>
+    <Headline element="h1">{frontMatter.title}</Headline>
     <Text fontFamily="monospace" fontSize="1.4rem">
-      {meta.date}
+      {frontMatter.publishedAt}
     </Text>
   </Box>
 );
