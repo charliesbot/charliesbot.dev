@@ -1,9 +1,10 @@
-import styled from "styled-components";
+import styled, { CSSObject } from "styled-components";
 
 type Props = {
   element: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
   children: React.ReactNode;
   className?: string;
+  style?: CSSObject;
 };
 
 type FontSizeProp = {
