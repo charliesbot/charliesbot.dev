@@ -1,6 +1,7 @@
 import Head from "next/head";
 import { Box } from "./ds/Box";
 import { NavBar } from "./Header";
+import { BackHeader } from "./BackHeader";
 
 type Props = {
   children: React.ReactNode;
@@ -17,8 +18,14 @@ const Layout = ({ children, pageTitle, description }: Props) => {
         <meta name="Description" content={description}></meta>
       </Head>
       <main>
-        <Box className="content" width="80%" maxWidth="800px" margin="0 auto">
-          <NavBar />
+        <Box
+          className="content"
+          width="80%"
+          maxWidth="800px"
+          margin="0 auto"
+          paddingVertical="8rem"
+        >
+          <BackHeader />
           {children}
         </Box>
       </main>

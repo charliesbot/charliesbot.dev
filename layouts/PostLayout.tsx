@@ -23,7 +23,7 @@ const PostLayout = (props: Props) => {
     <Layout pageTitle={frontMatter.title} description={frontMatter.summary}>
       <Box marginBottom="6rem">
         <Headline element="h1">{frontMatter.title}</Headline>
-        <Text fontFamily="monospace" fontSize="1.4rem">
+        <Text fontFamily="monospace" fontSize="1.8rem">
           {format(new Date(frontMatter.publishedAt), "MMM dd, yyyy")}
         </Text>
       </Box>

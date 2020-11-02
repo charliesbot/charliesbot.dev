@@ -4,7 +4,8 @@ const Link = styled.a`
   text-decoration: none;
   cursor: pointer;
   &:hover {
-    color: red;
+    color: #59c5fb;
+    text-decoration: underline;
   }
 `;
 
