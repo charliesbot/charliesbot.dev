@@ -6,15 +6,20 @@ import { Headline } from "@components/ds/Headline";
 import { posts } from "../getAllPosts";
 
 const IndexPage = () => {
+  const sortedDates = [...posts].sort((a, b) =>
+    new Date(a.publishedAt) < new Date(b.publishedAt) ? 1 : -1
+  );
+
   return (
     <Layout pageTitle="Charlie's blog" description="">
       <>
-        <Box width="70%">
-          <Headline element="h2">
-            Hey! I'm Charlie. I write about code, coffee, books and my life.
+        <Box width="95%">
+          <Headline element="h1">
+            Hey! I'm Charlie.
+            <br />I write about code.
           </Headline>
         </Box>
-        {posts.map((post) => (
+        {sortedDates.map((post) => (
           <PostEntry key={post.link} frontMatter={post} />
         ))}
       </>
