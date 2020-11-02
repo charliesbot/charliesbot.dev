@@ -4,8 +4,8 @@ import { Link as DSLink } from "./ds/Link";
 import { Headline } from "./ds/Headline";
 import { VerticalLayout } from "./ds/VerticalLayout";
 import { Text } from "./ds/Text";
-import { FrontMatter } from "./HeadPost";
 import { Spacer } from "./ds/Spacer";
+import { FrontMatter } from "layouts/PostLayout";
 
 type Props = {
   frontMatter: FrontMatter;

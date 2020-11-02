@@ -1,4 +1,5 @@
 ---
+layout: 'PostLayout'
 publishedAt: 2019-06-08
 title: 'Making libraries for React Native'
 summary: 'React Native is getting stronger day by day. But this doesn’t mean that every little piece of functionality you need is already out of the box.'
@@ -21,15 +22,15 @@ You know, it feels **atwesome** when you contribute back to the community.
 
 (Happy ending of the story, yes, [I created the library!](https://github.com/react-native-google-cast/react-native-google-cast))
 
-# Wrapping the code
+### Wrapping the code
 Let’s get the panorama. Chromecast SDK exists for both Android and iOS platforms. What we want to accomplish are the next goals
 
-1. Use the native SDKs.
-2. Choose the main tasks we want to use. Chromecast can achieve a lot of functionality, and cover each of them could be a extremely exhausted.
-3. Generate a common API to use in React Native.
-4. Publish our library in NPM.
+- Use the native SDKs.
+- Choose the main tasks we want to use. Chromecast can achieve a lot of functionality, and cover each of them could be a extremely exhausted.
+- Generate a common API to use in React Native.
+- Publish our library in NPM.
 
-# Some shortcuts ahead
+### Some shortcuts ahead
 You know, when I started my library, I researched like crazy other examples. Fortunately, since then, [a guy already have created a generator for us.](https://github.com/frostney/react-native-create-library)
 
 React Native generates libraries in its CLI too, but so far, it is for iOS only.
@@ -49,7 +50,7 @@ We could add Windows support too, but without any Chromecast SDK, it is pointles
 
 Keep it in mind tho!
 
-# Adding the Android SDK
+### Adding the Android SDK
 Before starting coding, let’s take a look to the one file inside the android folder.
 
 There’s a difference between this *build.gradle* and the one you have in a common React Native project.
@@ -75,7 +76,7 @@ dependencies {
 ```
 Now, we’re ready to code a little bit more. Let’s wrap it!
 
-# Wrapping the SDK
+### Wrapping the SDK
 react-native-create-library already created some files for us to start playing. One is *RNChromecastLibraryModule*, and the other one is *RNChromecastLibraryPackage*.
 
 *RNChromecastLibraryPackage* is the one that exposes our native code to React Native, and *RNChromecastLibraryModule* is where our implementation begins. Let’s take a look on it.
@@ -170,7 +171,7 @@ Javascript and native sides work in async threads to gain a boost in performance
 
 In this particular case, we’re broadcasting events. Our wrapper communicates with Chromecast, waits for a response, and then sends the data to our app.
 
-# The little details
+### The little details
 If we test our code, it will fail. We missed a big detail!
 
 Remember that we talked about the async nature of React Native? Well, most of the Chromecast’s events need to run in the main thread.
@@ -196,7 +197,7 @@ public void startScan() {
 
 *UiThreadUtil.runOnUiThread* to the rescue! It let us run code on the main thread. Problem solved!
 
-# This is just the beginning!
+### This is just the beginning!
 
 We haven’t finished yet!
 

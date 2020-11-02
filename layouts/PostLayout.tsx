@@ -1,5 +1,15 @@
-import { FrontMatter, HeadPost } from "@components/HeadPost";
+import format from "date-fns/format";
 import { Layout } from "@components/Layout";
+import { Box } from "@components/ds/Box";
+import { Headline } from "@components/ds/Headline";
+import { Text } from "@components/ds/Text";
+
+export type FrontMatter = {
+  title: string;
+  publishedAt: string;
+  summary: string;
+  __resourcePath: string;
+};
 
 type Props = {
   frontMatter: FrontMatter;
@@ -11,7 +21,12 @@ const PostLayout = (props: Props) => {
 
   return (
     <Layout pageTitle={frontMatter.title} description={frontMatter.summary}>
-      <HeadPost frontMatter={frontMatter} />
+      <Box marginBottom="6rem">
+        <Headline element="h1">{frontMatter.title}</Headline>
+        <Text fontFamily="monospace" fontSize="1.4rem">
+          {format(new Date(frontMatter.publishedAt), "MMM dd, yyyy")}
+        </Text>
+      </Box>
       <article>{children}</article>
     </Layout>
   );
