@@ -6,9 +6,11 @@ type Props = {
   children: React.ReactNode;
   pageTitle: string;
   description: string;
+  showBackHeader?: boolean;
 };
 
-const Layout = ({ children, description }: Props) => {
+const Layout = (props: Props) => {
+  const { children, description, showBackHeader = true } = props;
   return (
     <>
       <Head>
@@ -24,7 +26,7 @@ const Layout = ({ children, description }: Props) => {
           margin="0 auto"
           paddingVertical="8rem"
         >
-          <BackHeader />
+          {showBackHeader ? <BackHeader /> : null}
           {children}
         </Box>
       </main>

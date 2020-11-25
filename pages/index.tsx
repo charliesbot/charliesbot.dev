@@ -11,7 +11,7 @@ const IndexPage = () => {
   );
 
   return (
-    <Layout pageTitle="Charlie's blog" description="">
+    <Layout pageTitle="Charlie's blog" description="" showBackHeader={false}>
       <>
         <Box width="95%">
           <Headline element="h1">
