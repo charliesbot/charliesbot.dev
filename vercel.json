@@ -1,6 +1,5 @@
 {
   "version": 2,
-  "name": "charliesbot.dev",
   "builds": [
     {
       "src": "package.json",
