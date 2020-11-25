@@ -1,6 +1,5 @@
 import Head from "next/head";
 import { Box } from "./ds/Box";
-import { NavBar } from "./Header";
 import { BackHeader } from "./BackHeader";
 
 type Props = {
@@ -9,7 +8,7 @@ type Props = {
   description: string;
 };
 
-const Layout = ({ children, pageTitle, description }: Props) => {
+const Layout = ({ children, description }: Props) => {
   return (
     <>
       <Head>

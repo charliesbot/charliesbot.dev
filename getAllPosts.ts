@@ -1,7 +1,5 @@
-// import { frontMatter as mdxFtw } from "pages/blog/debounce_and_throttle/index.mdx";
+// @ts-ignore
 import { frontMatter as posts } from "./pages/blog/**/*.mdx";
-
-// const posts = [mdxFtw];
 
 const formatPath = (p: string) => p.replace(/\.mdx$/, "");
 
