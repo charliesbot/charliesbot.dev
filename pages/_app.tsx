@@ -1,20 +1,18 @@
 import "../styles/globals.css";
 
+import { AppComponent } from "next/dist/next-server/lib/router/router";
 import { ThemeProvider } from "styled-components";
-import { Layout } from "../components/Layout";
+import { MDXProvider } from "@components/MDXProvider";
+import { GlobalStyle } from "../theme/GlobalStyle";
+import { theme } from "../theme/theme";
 
-const theme = {
-  colors: {
-    primary: "#0070f3",
-  },
-};
-
-const App = ({ Component, pageProps }) => {
+const App: AppComponent = ({ Component, pageProps }) => {
   return (
-    <ThemeProvider theme={theme}>
-      <Layout pageTitle="Charlie Charlie" description="My site">
+    <ThemeProvider theme={theme.darkTheme}>
+      <GlobalStyle />
+      <MDXProvider>
         <Component {...pageProps} />
-      </Layout>
+      </MDXProvider>
     </ThemeProvider>
   );
 };

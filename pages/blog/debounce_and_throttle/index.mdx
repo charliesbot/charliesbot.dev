@@ -1,0 +1,79 @@
+---
+layout: 'PostLayout'
+title: Debounce and Throttle
+publishedAt: 2020-08-04
+summary: Sharing your custom components to the world is possible. No frameworks needed.
+---
+
+Functions are a fundamental part of most programming languages. When dealing with performance, functions could be part of our bottlenecks. Fortunately, there are tools like throttle and debounce.
+
+Both functions exist in [lodash](https://lodash.com), one of the most famous libraries in the javascript ecosystem.
+However, before jumping into installing it, wait a little bit!
+Let's understand what they are, and **how do they work**.
+
+First of all, what the heck are those functions?
+
+### Debounce
+
+Debounce is a tool that receives a function and a delay.
+It triggers the function after this delay happened.
+
+If something calls the function again before the requested time finishes,
+it resets the timer and starts the waiting all over again.
+
+![debounce](/images/debounce-and-throttle/debounce.jpg)
+
+The principles of a debounce function are
+
+- Set a function to be called and a timer to trigger the function
+- Reset the timer every time this function is called
+- Trigger the last function call when the timer ends.
+
+By following these concepts, our debounce function looks like this:
+
+```typescript
+type Func = (...args: any[]) => any
+
+const debounce = <T extends Func>(fn: T, delay: number) => {
+  let timeout: NodeJS.Timer
+  return (...args: Parameters<T>) => {
+    clearTimeout(timeout)
+    timeout = setTimeout(() => fn(...args), delay)
+  }
+}
+```
+
+### Throttle
+
+Throttle is pretty similar to debounce.
+
+Instead of resetting the timer, it blocks any function call that happens while the delay is running.
+
+![throttle](/images/debounce-and-throttle/throttle.jpg)
+
+The principles of a throttle function are
+
+- Set a function to be called and a timer to block other function calls
+- Block the function if it is called while the timer is running
+- Trigger a function only when the timer is not running
+
+Our throttle function looks like this:
+
+```typescript
+type Func = (...args: any[]) => any
+
+const throttle = <T extends Func>(fn: T, delay: number) => {
+  let timeout: NodeJS.Timer
+  return (...args: Parameters<T>) => {
+    if (timeout !== undefined) {
+      return
+    }
+
+    timeout = setTimeout(() => {
+      timeout = undefined
+    }, delay)
+
+    return fn(...args)
+  }
+}
+```

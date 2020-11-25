@@ -1,12 +1,6 @@
-type WebpackContext = __WebpackModuleApi.RequireContext;
+// @ts-ignore
+import { frontMatter as posts } from "./pages/blog/**/*.mdx";
 
-const importAll = (r: WebpackContext) => {
-  return r.keys().map((fileName) => ({
-    link: fileName.substr(1).replace(/\/index\.mdx$/, ""),
-    module: r(fileName),
-  }));
-};
+const formatPath = (p: string) => p.replace(/\.mdx$/, "");
 
-const posts = importAll(require.context("./pages/blog/", true, /\.mdx$/));
-
-export { posts };
+export { posts, formatPath };

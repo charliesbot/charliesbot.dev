@@ -1,7 +1,17 @@
-const withMDX = require("@next/mdx")({
-  extension: /\.mdx?$/,
-});
+const images = require("remark-images");
+const emoji = require("remark-emoji");
 
-module.exports = withMDX({
-  pageExtensions: ["js", "jsx", "ts", "tsx", "md", "mdx"],
-});
+const withMdxEnhanced = require("next-mdx-enhanced");
+
+module.exports = withMdxEnhanced({
+  layoutPath: "layouts",
+  fileExtensions: ["mdx"],
+  remarkPlugins: [images, emoji],
+  rehypePlugins: [],
+  usesSrc: false,
+  extendFrontMatter: {
+    process: (mdxContent, frontMatter) => {},
+    phase: "prebuild|loader|both",
+  },
+  reExportDataFetching: false,
+})();
