@@ -12,7 +12,7 @@
     "@meronex/icons": "^4.0.0",
     "@next/mdx": "^9.5.3",
     "date-fns": "^2.16.1",
-    "next": "9.5.3",
+    "next": "9.5.4",
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "react-syntax-highlighter": "^13.5.3",
