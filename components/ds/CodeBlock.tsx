@@ -1,6 +1,6 @@
-import SyntaxHighlighter from "react-syntax-highlighter";
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 // @ts-ignore this theme exists
-import { nightOwl as theme } from "react-syntax-highlighter/dist/cjs/styles/hljs";
+import { nord as theme } from "react-syntax-highlighter/dist/cjs/styles/prism";
 import { Box } from "./Box";
 
 type Props = {
@@ -21,7 +21,7 @@ const CodeBlock = (props: Props) => {
           paddingBottom: "20px",
           borderRadius: 5,
           fontSize: "16px",
-          background: "#292c34",
+          background: "rgb(31 36 47)",
         }}
         codeTagProps={{
           style: {

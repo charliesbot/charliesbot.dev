@@ -2,11 +2,13 @@ import { Components, MDXProvider } from "@mdx-js/react";
 import { CodeBlock } from "./ds/CodeBlock";
 import { Headline } from "./ds/Headline";
 import { Image } from "./ds/Image";
+import { MarkdownLink } from "./ds/MarkdownLink";
 import { Text } from "./ds/Text";
 
 const consistenMargin = "2.5rem";
 
 const mdComponents: Components = {
+  a: (props) => <MarkdownLink {...props} />,
   h1: (props) => <Headline element="h1" {...props} />,
   h2: (props) => <Headline element="h2" {...props} />,
   h3: (props) => <Headline element="h3" {...props} />,
