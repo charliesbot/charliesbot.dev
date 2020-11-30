@@ -16,7 +16,7 @@ const FancyLink = styled.a`
   text-decoration: none;
   background-size: 100% 1.4px;
   background-repeat: no-repeat;
-  background-position: 0 1.3em;
+  background-position: 0 1.2em;
   transition: color 0.2s ease-out, background-position 0.1s,
     background-size 0.1s;
   background-image: linear-gradient(
