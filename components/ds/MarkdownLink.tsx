@@ -5,7 +5,6 @@ const domainRegex = ["localhost", "charliesbot.dev"];
 
 const MarkdownLink = ({ href, ...props }: any) => {
   const isDomainHref = domainRegex.some((d) => href.includes(d));
-  console.log("teeest ", props);
 
   if (!isDomainHref) {
     return (

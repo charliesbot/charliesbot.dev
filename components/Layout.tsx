@@ -1,16 +1,15 @@
 import Head from "next/head";
 import { Box } from "./ds/Box";
-import { BackHeader } from "./BackHeader";
+import { Navbar } from "./Navbar";
 
 type Props = {
   children: React.ReactNode;
   pageTitle: string;
   description: string;
-  showBackHeader?: boolean;
 };
 
 const Layout = (props: Props) => {
-  const { children, description, showBackHeader = true } = props;
+  const { children, description } = props;
   return (
     <>
       <Head>
@@ -26,7 +25,7 @@ const Layout = (props: Props) => {
           margin="0 auto"
           paddingVertical="8rem"
         >
-          {showBackHeader ? <BackHeader /> : null}
+          <Navbar />
           {children}
         </Box>
       </main>
