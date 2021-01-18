@@ -6,9 +6,12 @@ import { Headline } from "@components/ds/Headline";
 import { posts } from "../getAllPosts";
 
 const IndexPage = () => {
-  const sortedDates = [...posts].sort((a, b) =>
-    new Date(a.publishedAt) < new Date(b.publishedAt) ? 1 : -1
-  );
+  console.log([...posts]);
+  const sortedDates = [...posts]
+    .filter(({ language = "en" }) => language === "en")
+    .sort((a, b) =>
+      new Date(a.publishedAt) < new Date(b.publishedAt) ? 1 : -1
+    );
 
   return (
     <Layout pageTitle="Charlie's blog" description="">
