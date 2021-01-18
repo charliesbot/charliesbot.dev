@@ -6,7 +6,6 @@ import { Headline } from "@components/ds/Headline";
 import { posts } from "../getAllPosts";
 
 const IndexPage = () => {
-  console.log("tesst", posts);
   const sortedDates = [...posts].sort((a, b) =>
     new Date(a.publishedAt) < new Date(b.publishedAt) ? 1 : -1
   );
