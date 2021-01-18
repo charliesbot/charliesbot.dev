@@ -1,0 +1,79 @@
+---
+layout: 'PostLayout'
+title: Debounce y Throttle
+publishedAt: 2020-08-04
+summary: Sharing your custom components to the world is possible. No frameworks needed.
+---
+
+Las funciones son elementos fundamentales en cualquier lenguaje de programación. Al tratar conceptos como `performance`, las funciones pueden jugar en nuestra contra, al causar un impacto negativo en nuestra aplicación. Afortunadamente, existen herramientas como `throttle` y `debounce`.
+
+Estas herramientas existen en [lodash](https://lodash.com), una de las librerías más famosas en el ecosistema de javascript.
+
+¡Pero espera! Antes de instalar lodash ahora mismo, entendamos que son esas herramientas, y sobretodo **como trabajan**.
+
+### Debounce
+
+Debounce es una herramienta que espera una función como primer parámetro, y un tiempo de retraso como segundo argumento.
+Esta herramienta va a ejecutar esta función una vez que el valor de espera haya ocurrido.
+
+Si esta función es llamada antes de que el tiempo límite haya terminado,
+este contador se reinicia y la espera vuelve a comenzar.
+
+![debounce](/images/debounce-and-throttle/debounce.jpg)
+
+Los principios de un debounce son:
+
+- Definir una función que será retrasada y un tiempo límite tras el cual esta función será llamada.
+- Reiniciar el contador cada vez que la intención para llamar a la función ocurra.
+- Ejecutar la última llamada a la función una vez que el tiempo límite haya transcurrido.
+
+Tras seguir estos conceptos, nuestra función debounce lucirá así:
+
+```typescript
+type Func = (...args: any[]) => any
+
+const debounce = <T extends Func>(fn: T, delay: number) => {
+  let timeout: NodeJS.Timer
+  return (...args: Parameters<T>) => {
+    clearTimeout(timeout)
+    timeout = setTimeout(() => fn(...args), delay)
+  }
+}
+```
+
+### Throttle
+
+Throttle es bastante similar a debounce.
+
+En lugar de reiniciar el contador de tiempo, lo que haremos será bloquear
+cualquier llamada que ocurra mientras este contador sigue corriendo.
+
+![throttle](/images/debounce-and-throttle/throttle.jpg)
+
+Los principios de una función throttle son:
+
+- Definir una función que será llamada y un tiempo límite
+durante el cual se bloqueará cualquier otra llamada a esta función.
+- Bloquearemos la llamada a la función si esta es llamada mientras el tiempo de bloqueo sigue corriendo.
+- Llamaremos a la función solamente cuando el tiempo de bloqueo no este corriendo.
+
+Nuestra función throttle se verá así:
+
+```typescript
+type Func = (...args: any[]) => any
+
+const throttle = <T extends Func>(fn: T, delay: number) => {
+  let timeout: NodeJS.Timer
+  return (...args: Parameters<T>) => {
+    if (timeout !== undefined) {
+      return
+    }
+
+    timeout = setTimeout(() => {
+      timeout = undefined
+    }, delay)
+
+    return fn(...args)
+  }
+}
+```
