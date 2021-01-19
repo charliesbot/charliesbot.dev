@@ -2,12 +2,11 @@ import { PostEntry } from "@components/PostEntry";
 import { Layout } from "@components/Layout";
 import { Box } from "@components/ds/Box";
 import { Headline } from "@components/ds/Headline";
-
-import { posts } from "../getAllPosts";
+import { posts } from "getAllPosts";
 
 const IndexPage = () => {
   const sortedDates = [...posts]
-    .filter(({ language = "en" }) => language === "en")
+    .filter(({ language }) => language === "es")
     .sort((a, b) =>
       new Date(a.publishedAt) < new Date(b.publishedAt) ? 1 : -1
     );
@@ -16,9 +15,9 @@ const IndexPage = () => {
     <Layout pageTitle="Charlie's blog" description="">
       <>
         <Box width="95%">
-          <Headline element="h1">
-            Hey! I'm Charlie.
-            <br />I write about code.
+          <Headline element="h2">
+            Hola! Soy Charlie.
+            <br /> Escribo acerca de programación.
           </Headline>
         </Box>
         {sortedDates.map((post) => (
