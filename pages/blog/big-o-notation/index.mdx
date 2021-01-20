@@ -1,0 +1,139 @@
+---
+layout: 'PostLayout'
+title: 'Quick guide for Big-O Notation'
+publishedAt: 2021-01-21
+summary: Big O notation is a tool that help us to measure the complexity of our algorithms. Let's see how it works
+---
+
+Code is a balance between the performance and the solution.
+
+Most of the time, we care more about the solution, as our primary goal is to enrich our users' lives. That makes sense because getting revenue by selling value is what drives us to scale a product.
+
+When thinking about performance, several metrics help us understand our code's power.
+
+We can think about it like:
+- In the best scenario, how fast will my code be?
+- In the worst scenario, how slow will my code be?
+
+This post will focus on the latter case, which is known as *Big-O notation*.
+
+## What is Big-O?
+
+Big-O notation helps us to measure our algorithm in the worst scenario.
+
+Big-O answers questions like:
+- How long will my algorithm take to sort something as the size of my dataset grows?
+- How much space will my code take to solve a problem?
+
+These scenarios can be looping an array, assigning a value to a variable, or adding entries to a data structure, for example.
+
+Different algorithms or data structures can solve each of these cases with their respective trade-offs.
+
+Big-O gives us a way to understand these trade-offs, so we can reasonably address the problem.
+
+## Big-O Rules
+
+### Rule 1: Ignore the constants
+
+Big-O is all about how algorithms scale.
+Constant values are not relevant, as they don't make a massive difference for the final result.
+
+### Rule 2: Ignore low-order terms
+When we need to compare different orders happening in an algorithm,
+Big-O prefers the higher-order terms.
+
+Remember: `Big-O is all about worst-cases`.
+
+Let's see the most common Big-O complexities.
+
+##### O(1) - Constant Time
+An algorithm has a complexity O(1) when it always takes the same time to run, no matter the size of our data.
+
+##### O(logn) - Logarithmic Time
+This one is tricky to explain! But an easy way to get is: if our algorithm has a way to divide a problem, and therefore reach a result in fewer steps, we might say this algorithm has complexity O(logn).
+
+##### O(n) - Linear Time
+An algorithm has a complexity O(n) when its performance grows linearly depending on the dataset.
+
+##### O(nlogn) - Linearithmic Time
+When an algorithm runs a logarithm function per linear operation, we can say its complexity is O(nlogn).
+Most of the sort operations, like quicksort or mergesort, have a complexity of O(nlogn).
+
+##### O(n^2) - Quadratic Time
+An algorithm has a complexity O(n^2) when its performance relies on a nested linear operation. A typical case is when we loop a list, and inside this operation, we loop the same list again.
+
+##### O(2^n) - Exponential Time
+An algorithm has a complexity O(2^n) when it grows double per entry in the data set.
+A common scenario to reach an exponential time is when we apply recursive operations.
+
+##### O(n!) - Factorial Time
+We can find this complexity when working with permutations and combinations.
+Beware: this complexity grows extremely fast!
+
+##### Putting all the pieces together
+
+![big_o_chart](/images/big-o-notation/bigo.jpg)
+
+The chart visually represents the cost of each complexity.
+
+Now that we understand each of them, we can finally order them to pick the final complexity when we need to decide between multiple options happening in a single function.
+
+```
+O(1) < O(logn) < O(n) < O(nlogn) < O(n2) < O (2n) < O(n!)
+```
+
+### Rule 3: Use different variables for different inputs
+
+When our algorithm relies on different datasets, we represent each of them with a variable.
+
+## Big-O by example
+
+``` javascript
+function bigO() {
+  const array = [10, 8, 4, 40, 25];
+
+  let max = -Infinity; // O(1)
+  let array2 = [];
+
+  // O(n^2)
+  for (let i = 0; i < array.length; i++) {
+    let sum = 0;
+    for (let j = 0; j < array.length; j++) {
+      if (j === i) {
+        continue;
+      }
+      sum += array[j];
+    }
+
+    array2.push(sum);
+  }
+
+  // O(n)
+  for (let i = 0; i < array2.length; i++) {
+    max = Math.max(array2[i], max);
+  }
+
+  return max;
+}
+```
+
+In this example, we have a function that will get the maximum number in a list after summing each of the elements except the current number itself.
+
+The algorithm is nesting two loops to sum each number with the rest of the list elements. Therefore, we have quadratic complexity.
+
+We also have an assignment of a value (-Infinity). No matter how many times we assign this same value, the time complexity won't change. In other words, its complexity is constant.
+
+Also, the algorithm loops the sum list again to get the maximum value. It updates the value if the current number is higher than the one it previously saved in each iteration. So its complexity is linear.
+
+And finally, we can compare each of these complexities and determine the Big-O of this function:
+
+```
+O(1) < O(n) < O(n^2)
+```
+
+The complexity of this function is O(n^2)! (Oof, we can do better!)
+
+And that's it! Now you have the tools to measure your algorithms.
+
+Let me know how it goes!
+

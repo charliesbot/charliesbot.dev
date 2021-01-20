@@ -1,0 +1,144 @@
+---
+layout: 'PostLayout'
+title: 'Guía rápida para la notación Big-O'
+publishedAt: 2021-01-21
+summary: La notación Big-O es una herramienta que nos ayuda a medir la complejidad de nuestros algoritmos. Aprendamos como funciona.
+language: 'es'
+---
+
+El código es un equilibrio entre performance y solución.
+
+La mayoría del tiempo, nos preocupamos más por la solución, dado que nuestra meta principal es enriquecer la vida de nuestros usuarios. Eso tiene mucho sentido, ya que generar ingresos a través del valor de nuestro producto es lo que nos ayuda encontrar formas de escalarlo.
+
+Afortunadamente, cuando nuestra preocupación es entender el performance de nuestro algoritmo, tenemos métricas que nos ayudan a entender el poder de nuestro código.
+
+Podemos pensarlo de esta forma:
+
+- En el mejor escenario: qué tan rápido será mi código?
+- En el peor escenario, qué tan lento será mi código?
+
+Estew post se enfocará en la segunda pregunta, la cual también es conocida como *Big-O notation*.
+
+## Qué es Big-O?
+
+La notación Big-O nos ayuda a medir la complejidad de nuestro algoritmo en el peor escenario.
+
+Big-O contesta preguntas como:
+
+- Cuánto tardará mi algoritmo en ordenar una lista si el número de elementos crece?
+- Cuánto espacio tomará mi algoritmo para solucionar un problema?
+
+Estos escenarios pueden ser recorrer una lista, asignar un valor a una variable, o añadir información a una estructura de datos, por ejemplo.
+
+Diferentes algoritmos o estructuras de datos pueden resolver cada uno de estos problemas, cada uno con diferentes sacrificios.
+
+Big-O nos da una forma de entender estos costos, y por ende, podemos tomar acciones de forma razonable para poner enfrentar estos problemas.
+
+## Reglas de Big-O
+
+### Regla 1: Ignora las constantes
+
+Big-O es acerca de como los algoritmos escalan.
+Los valores contantes no son relevantes, ya que no causan diferencias importantes en la complejidad final.
+
+### Regla 2: Ignora los términos de baja prioridad
+
+Cuando tenemos que comparar diferentes prioridades ocurriendo en un algoritmo, Big-O prefiere los términos de más alta prioridad.
+
+Recuerda: `Big-O se trata de medir el peor caso`.
+
+Veamos las complejidad más comunes que pueden ocurrir en Big-O.
+
+##### O(1) - Tiempo Constante
+Un algoritmo tiene complejidad O(1) cuando siempre toma el mismo tiempo para correr, sin importar el tamaño de nuestros datos.
+
+##### O(logn) - Tiempo Logaritmico
+Una forma sencilla de explicar este caso es: si nuestro algoritmo tiene una forma de dividir un problema, y por lo tanto lograr un resultado con menos pasos, podemos decir que este algoritmo tiene complejidad O(logn).
+
+##### O(n) - Tiempo Linear
+Un algoritmo tiene complejidad O(n) cuando su performance crece de forma linear según el set de datos.
+
+##### O(nlogn) - Tiempo Linealitmico
+Cuando un algoritmo corre una función logaritmica por operación linear, podemos decir que su complejidad es O(nlogn).
+
+La mayoría de los algoritmos para ordenamiento, como *quicksort* o *mergesort*, tienen complejidad O(nlogn).
+
+##### O(n²) - Tiempo Cuadrático
+Un algoritmo tiene complejidad O(n²) cuando su performance depende en operaciones lineales anidadas. Un caso típico es cuando se recorre una lista, y dentro de esta operación, volvemos a recorrer esa misma lista una vez más.
+
+##### O(2^n) - Tiempo Exponencial
+Un algoritmo tiene complejidad O(2^n) cuando crece el doble por elemento en un set de datos.
+Un escenario común es cuando aplicamos operaciones recursivas.
+
+##### O(n!) - Tiempo Factorial
+Podemos encontrar esta complejidad cuando trabajamos con permutaciones y combinaciones.
+
+Cuidado: **esta complejidad crece extremadamente rápido.**
+
+##### Pongamos todos los conceptos en juego
+
+![big_o_chart](/images/big-o-notation/bigo.jpg)
+
+La gráfica muestra de forma visual el costo de cada complejidad.
+
+Ahora que entendemos cada caso, podemos finalmente ordenarlos para elegir la complejidad resultante cuando tenemos que decidir entre multiples opciones ocurriendo en una sola función.
+
+```
+O(1) < O(logn) < O(n) < O(nlogn) < O(n2) < O (2n) < O(n!)
+```
+
+### Regla 3: Usa diferente variables por cada entrada de datos
+
+CUando nuestro algoritmo depende de diferentes set de datos, los representamos cada uno con una variable distinta.
+
+## Big-O con un ejemplo
+
+``` javascript
+function bigO() {
+  const array = [10, 8, 4, 40, 25];
+
+  let max = -Infinity; // O(1)
+  let array2 = [];
+
+  // O(n^2)
+  for (let i = 0; i < array.length; i++) {
+    let sum = 0;
+    for (let j = 0; j < array.length; j++) {
+      if (j === i) {
+        continue;
+      }
+      sum += array[j];
+    }
+
+    array2.push(sum);
+  }
+
+  // O(n)
+  for (let i = 0; i < array2.length; i++) {
+    max = Math.max(array2[i], max);
+  }
+
+  return max;
+}
+```
+
+En este ejemplo, tenemos una función que obtiene el número más grande en una lista después de sumar cada uno de ellos con el resto.
+
+Este algoritmo anida dos loops, los cuales van a identifica el número en cuestión para saltarlo, y sumar el resto de los elementos. Por ello, este fragmento del algoritmo tiene complejidad cuadrática.
+
+Tenemos un valor que asignamos (-Infinity). No importa cuantas veces asignemos este valor, la complejidad en tiempo no va a variar. En otras palabras, su complejidad es constante.
+
+Este algoritmo también recorre la lista de sumas para obtener el valor más alto. En cada iteración, reemplaza una variable para estar al tanto de este valor máximo. Su complejidad es linear.
+
+Y finalmente, podemos comparar estas 3 complejidad que hemos calculado para determinar la notación Big-O de esta función:
+
+```
+O(1) < O(n) < O(n^2)
+```
+
+La complejidad de esta función es O(n²)!
+
+Y esto es todo!
+
+Ahora tenemos las herramientas para poder medir la complejidad de nuestros algoritmos!
+
