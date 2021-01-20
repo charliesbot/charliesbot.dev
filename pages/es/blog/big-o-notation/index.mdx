@@ -17,7 +17,7 @@ Podemos pensarlo de esta forma:
 - En el mejor escenario: qué tan rápido será mi código?
 - En el peor escenario, qué tan lento será mi código?
 
-Estew post se enfocará en la segunda pregunta, la cual también es conocida como *Big-O notation*.
+Este post se enfocará en la segunda pregunta, la cual también es conocida como *Big-O notation*.
 
 ## Qué es Big-O?
 
@@ -55,11 +55,11 @@ Un algoritmo tiene complejidad O(1) cuando siempre toma el mismo tiempo para cor
 ##### O(logn) - Tiempo Logaritmico
 Una forma sencilla de explicar este caso es: si nuestro algoritmo tiene una forma de dividir un problema, y por lo tanto lograr un resultado con menos pasos, podemos decir que este algoritmo tiene complejidad O(logn).
 
-##### O(n) - Tiempo Linear
-Un algoritmo tiene complejidad O(n) cuando su performance crece de forma linear según el set de datos.
+##### O(n) - Tiempo Lineal
+Un algoritmo tiene complejidad O(n) cuando su performance crece de forma lineal según el set de datos.
 
-##### O(nlogn) - Tiempo Linealitmico
-Cuando un algoritmo corre una función logaritmica por operación linear, podemos decir que su complejidad es O(nlogn).
+##### O(nlogn) - Tiempo Linealítmico
+Cuando un algoritmo corre una función logarítmica por operación lineal, podemos decir que su complejidad es O(nlogn).
 
 La mayoría de los algoritmos para ordenamiento, como *quicksort* o *mergesort*, tienen complejidad O(nlogn).
 
@@ -128,7 +128,7 @@ Este algoritmo anida dos loops, los cuales van a identifica el número en cuesti
 
 Tenemos un valor que asignamos (-Infinity). No importa cuantas veces asignemos este valor, la complejidad en tiempo no va a variar. En otras palabras, su complejidad es constante.
 
-Este algoritmo también recorre la lista de sumas para obtener el valor más alto. En cada iteración, reemplaza una variable para estar al tanto de este valor máximo. Su complejidad es linear.
+Este algoritmo también recorre la lista de sumas para obtener el valor más alto. En cada iteración, reemplaza una variable para estar al tanto de este valor máximo. Su complejidad es lineal.
 
 Y finalmente, podemos comparar estas 3 complejidad que hemos calculado para determinar la notación Big-O de esta función:
 
