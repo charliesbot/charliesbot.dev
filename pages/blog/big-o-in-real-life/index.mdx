@@ -1,0 +1,68 @@
+---
+layout: 'PostLayout'
+title: 'Big-O in real life'
+publishedAt: 2021-01-22
+summary: Big O notation is a tool that help us to measure the complexity of our algorithms. Let's see how it works
+---
+
+
+
+```typescript
+
+// O(n²)
+const bubbleSort = (list: numbers[]) => {
+  const copyList = [...list];
+  for (let i = 0; i < copyList.length; i++) {
+    for (let j = 0; j < copyList.length; j++) {
+      if (copyList[i] > copyList[j]) {
+        let temp = copyList[i];
+        copyList[i] = copyList[j];
+        copyList[j] = temp;
+      }
+    }
+  }
+
+  return copyList;
+}
+
+const getMaxNumber = (data: number[]) => {
+  const sortedNumbers = bubbleSort(data);
+
+  // O(1)
+  return sortedNumbers[0];
+}
+
+const numbers = [9, 1, 8, 0, 4, 15, 23, 6];
+getMaxNumber(numbers); // 23
+
+```
+
+```typescript
+const getMaxNumber = (data: number[]) => {
+  // O(nlogn)
+  const sortedNumbers = [...data].sort((a, b) => b - a);
+
+  // O(1)
+  return sortedNumbers[0];
+}
+
+const numbers = [9, 1, 8, 0, 4, 15, 23, 6];
+getMaxNumber(numbers); // 23
+```
+
+```typescript
+const getMaxNumber = (data: number[]) => {
+  let max = -Infinity;
+
+  O(n)
+  data.forEach((x) => {
+    max = Math.max(x, max);
+  })
+
+  return max;
+}
+
+const numbers = [9, 1, 8, 0, 4, 15, 23, 6];
+getMaxNumber(numbers); // 23
+```
+
