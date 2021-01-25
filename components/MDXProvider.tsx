@@ -15,7 +15,9 @@ const mdComponents: Components = {
   h4: (props) => <Headline element="h4" {...props} />,
   h5: (props) => <Headline element="h5" {...props} />,
   h6: (props) => <Headline element="h6" {...props} />,
-  pre: (props) => <>{props.children}</>,
+  pre: (props) => {
+    return <>{props.children}</>;
+  },
   img: (props) => (
     <Image {...props} marginBottom={consistenMargin} width="100%" />
   ),

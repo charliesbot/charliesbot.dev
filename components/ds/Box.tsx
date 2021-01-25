@@ -1,6 +1,9 @@
 import styled, { CSSObject } from "styled-components";
 
 type CherryPick =
+  | "display"
+  | "alignItems"
+  | "justifyContent"
   | "lineHeight"
   | "width"
   | "maxWidth"
@@ -29,6 +32,9 @@ export type BoxProps = Partial<Pick<CSSObject, CherryPick>> & {
 };
 
 const Box = styled.div<BoxProps>((props) => ({
+  display: props.display,
+  alignItems: props.alignItems,
+  justifyContent: props.justifyContent,
   lineHeight: props.lineHeight,
   fontSize: props.fontSize,
   fontFamily: props.fontFamily,
