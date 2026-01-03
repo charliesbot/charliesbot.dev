@@ -14,6 +14,11 @@ const Options = [
     href: "https://slides.com/charliesbot",
     target: "_blank",
   },
+  {
+    title: "Contact",
+    href: "/contact",
+    target: "",
+  },
 ];
 
 const Navbar = () => {
